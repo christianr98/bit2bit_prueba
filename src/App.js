@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { StylesProvider } from '@material-ui/styles';
+import { ThemeProvider } from 'styled-components';
+import Header from './components/Header';
+import Home from './components/Home';
+import Router from './routers/Router';
 function App() {
+
+  const theme = {
+    colorPrimary: "#f48024",
+    darkRedSecondary: "#662323",
+    softGray: "#BDBDBD",
+    gray: "#828282",
+    lightRed: "#FF7676",
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StylesProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <Header />
+        <Router />
+      </ThemeProvider>
+    </StylesProvider>  
   );
 }
 
